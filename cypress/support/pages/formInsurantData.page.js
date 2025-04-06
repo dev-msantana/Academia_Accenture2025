@@ -27,6 +27,8 @@ const dadosSeguradorFake = {
   webSite: faker.internet.url(),
 }
 
+const picture = '../../Academia_Accenture2025/cypress/assets/foto.jpg'
+
 Cypress.Commands.add('enterInsurantData', () => { 
     cy.get(seletoresINSURANT.TITLE_pageinsurant).should('be.visible')
     cy.get(seletoresINSURANT.INPUT_firstname).type(dadosSeguradorFake.firstName)
@@ -40,7 +42,7 @@ Cypress.Commands.add('enterInsurantData', () => {
     cy.get(seletoresINSURANT.SELECT_Occupation).select(Math.floor(Math.random() * 5) + 1)
     cy.get(seletoresINSURANT.RADIO_hobbies).click({force:true})
     cy.get(seletoresINSURANT.INPUT_website).type(dadosSeguradorFake.webSite)
-    cy.get(seletoresINSURANT.INPUT_picture).selectFile('foto.jpg', { force: true })
+    cy.get(seletoresINSURANT.INPUT_picture).selectFile(picture, { force: true })
     cy.get(seletoresINSURANT.Dados_obrigatoriosInsurant).should('not.exist')
     cy.log('Dados obrigatorios do segurador preenchidos com sucesso')
 })
