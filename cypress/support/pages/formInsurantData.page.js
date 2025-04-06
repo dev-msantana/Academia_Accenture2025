@@ -1,53 +1,55 @@
-import { faker } from '@faker-js/faker'
+import { da, faker } from '@faker-js/faker'
 
 const seletoresINSURANT = {
-  INPUT_firstname: '#firstname',
-  INPUT_lastname: '#lastname',
-  INPUT_birthdate: '#birthdate',
-  RADIO_gender: '#gendermale',
-  INPUT_streetaddress: '#streetaddress',
-  SELECT_country: '#country',
-  INPUT_zipcode: '#zipcode',
-  INPUT_city: '#city',
-  SELECT_Occupation: '#occupation',
-  RADIO_hobbies: '#skydiving',
-  INPUT_website: '#website',
-  INPUT_picture: '#picturecontainer',
-  TITLE_pageinsurant: '.idealsteps-step-active, a[name="Enter Insurant Data"]',
-  Dados_obrigatoriosInsurant: '.invalid',
-  BTN_next2: '#nextenterproductdata',
+  INPUT_FIRSTNAME: '#firstname',
+  INPUT_LASTNAME: '#lastname',
+  INPUT_BIRTHDATE: '#birthdate',
+  RADIO_GENDER: '#gendermale',
+  INPUT_STREETADDRESS: '#streetaddress',
+  SELECT_COUNTRY: '#country',
+  INPUT_ZIPCODE: '#zipcode',
+  INPUT_CITY: '#city',
+  SELECT_OCCUPATION: '#occupation',
+  RADIO_HOBBIES: '#skydiving',
+  INPUT_WEBSITE: '#website',
+  INPUT_PICTURE: '#picturecontainer',
+  TITLE_PAGEINSURANT: '.idealsteps-step-active, a[name="Enter Insurant Data"]',
+  DADOS_OBRIGATORIOSINSURANT: '.invalid',
+  BTN_NEXT2: '#nextenterproductdata',
+  PICTURE: '../../Academia_Accenture2025/cypress/assets/foto.jpg'
 }
 
-const dadosSeguradorFake = {
-  firstName: faker.person.firstName().replace('-',''),
-  lastName: faker.person.lastName().replace('-',''),
-  streetAdress: faker.location.streetAddress(),
-  zipCode: faker.location.zipCode(),
-  city: faker.location.city(),
-  webSite: faker.internet.url(),
+const dadosFakeSegurado = {
+  FIRSTNAME: faker.person.firstName().replace(/[-']/g, ''),
+  LASTNAME: faker.person.lastName().replace(/[-']/g, ''),
+  STREETADDRESS: faker.location.streetAddress(),
+  ZIPCODE: faker.location.zipCode(),
+  CITY: faker.location.city(),
+  WEBSITE: faker.internet.url(),
 }
-
-const picture = '../../Academia_Accenture2025/cypress/assets/foto.jpg'
 
 Cypress.Commands.add('enterInsurantData', () => { 
-    cy.get(seletoresINSURANT.TITLE_pageinsurant).should('be.visible')
-    cy.get(seletoresINSURANT.INPUT_firstname).type(dadosSeguradorFake.firstName)
-    cy.get(seletoresINSURANT.INPUT_lastname).type(dadosSeguradorFake.lastName)
-    cy.get(seletoresINSURANT.INPUT_birthdate).type('11/04/2004')
-    cy.get(seletoresINSURANT.RADIO_gender).click({force: true})
-    cy.get(seletoresINSURANT.INPUT_streetaddress).type(dadosSeguradorFake.streetAdress)
-    cy.get(seletoresINSURANT.SELECT_country).select(Math.floor(Math.random() * 206) + 1)
-    cy.get(seletoresINSURANT.INPUT_zipcode).type(Math.floor(Math.random(dadosSeguradorFake.zipCode) * 1000000).toString())
-    cy.get(seletoresINSURANT.INPUT_city).type(dadosSeguradorFake.city)
-    cy.get(seletoresINSURANT.SELECT_Occupation).select(Math.floor(Math.random() * 5) + 1)
-    cy.get(seletoresINSURANT.RADIO_hobbies).click({force:true})
-    cy.get(seletoresINSURANT.INPUT_website).type(dadosSeguradorFake.webSite)
-    cy.get(seletoresINSURANT.INPUT_picture).selectFile(picture, { force: true })
-    cy.get(seletoresINSURANT.Dados_obrigatoriosInsurant).should('not.exist')
-    cy.log('Dados obrigatorios do segurador preenchidos com sucesso')
+    cy.get(seletoresINSURANT.TITLE_PAGEINSURANT).should('be.visible')
+
+    cy.get(seletoresINSURANT.INPUT_FIRSTNAME).type(dadosFakeSegurado.FIRSTNAME)
+    cy.get(seletoresINSURANT.INPUT_LASTNAME).type(dadosFakeSegurado.LASTNAME)
+    cy.get(seletoresINSURANT.INPUT_BIRTHDATE).type('11/04/2004')
+    cy.get(seletoresINSURANT.RADIO_GENDER).click({force: true})
+    cy.get(seletoresINSURANT.INPUT_STREETADDRESS).type(dadosFakeSegurado.STREETADDRESS)
+    cy.get(seletoresINSURANT.SELECT_COUNTRY).select(Math.floor(Math.random() * 206) + 1)
+    cy.get(seletoresINSURANT.INPUT_ZIPCODE).type(Math.floor(Math.random(dadosFakeSegurado.ZIPCODE) * 1000000).toString())
+    cy.get(seletoresINSURANT.INPUT_CITY).type(dadosFakeSegurado.CITY)
+    cy.get(seletoresINSURANT.SELECT_OCCUPATION).select(Math.floor(Math.random() * 5) + 1)
+    cy.get(seletoresINSURANT.RADIO_HOBBIES).click({force:true})
+    cy.get(seletoresINSURANT.INPUT_WEBSITE).type(dadosFakeSegurado.WEBSITE)
+    cy.get(seletoresINSURANT.INPUT_PICTURE).selectFile(seletoresINSURANT.PICTURE, { force: true })
+    
+    cy.get(seletoresINSURANT.DADOS_OBRIGATORIOSINSURANT).should('not.exist')
+    cy.log('Formulário de dados do segurado preenchido com sucesso ✅')
 })
 
 
 Cypress.Commands.add('irParaEnterProductData', () => {
-    cy.get(seletoresINSURANT.BTN_next2).click()
+    cy.get(seletoresINSURANT.BTN_NEXT2).click()
+    cy.log('Avançou para a etapa de dados do produto')
 })

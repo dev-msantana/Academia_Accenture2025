@@ -1,38 +1,38 @@
 import {Given, When, And, Then, Before, After} from 'cypress-cucumber-preprocessor/steps'
 
-Given('que o usuário esteja na página inicial do portal Tricentis', () => {
+Given('que o usuário acessa a página inicial do portal Tricentis', () => {
   cy.visit('/')
-  cy.validacaoHome()
+  cy.validarHomePage()
 })
 
-And('clica na opção Automobile', () => {
-  cy.selecionarAutomobile()
+When('o usuário clica na opção Automobile', () => {
+  cy.selecionarOpcaoAutomobile()
 })
 
-And('preenche o formulario com os dados do veículo', () => {
+And('preenche o formulário com os dados do veículo', () => {
   cy.enterVehicleData()
   cy.irParaInsurantData()
 })
 
-And('preenche o formulario com os dados do segurado', () => {
+And('preenche o formulário com os dados do segurado', () => {
   cy.enterInsurantData()
   cy.irParaEnterProductData()
 })
 
-And('preenche o formulario com os dados do seguro', () => {
+And('preenche o formulário com as informações do seguro', () => {
   cy.enterProductData()
   cy.irParaSelectPriceOption()
 })
 
-When('seleciona o proposta de seguro', () => {
+And('seleciona a opção de seguro desejada', () => {
   cy.selectPriceOption()
   cy.irParaSendQuote()
 })
 
-And('preenche os dados para envio de proposta', () => {
+And('informa os dados para envio da proposta', () => {
   cy.enterQuoteData()
 })
 
-And('a proposta é enviada com sucesso', () => {
-  cy.envioEmail()
+Then('visualiza a mensagem de envio da proposta com sucesso', () => {
+  cy.enviarCotacao()
 })

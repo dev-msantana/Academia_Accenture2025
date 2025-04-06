@@ -1,12 +1,13 @@
 const BTN_AUTOMOBILE = '#nav_automobile'
-const TEXT_pageAutomobile = '#selectedinsurance'
+const TEXT_PAGEAUTOMOBILE = '#selectedinsurance'
 
-Cypress.Commands.add('validacaoHome', () => {
+Cypress.Commands.add('validarHomePage', () => {
     cy.url().should('include', 'https://sampleapp.tricentis.com/')
+    cy.log('Página inicial validada com sucesso ✅')
 })
 
-Cypress.Commands.add('selecionarAutomobile', () => {
+Cypress.Commands.add('selecionarOpcaoAutomobile', () => {
     cy.get(BTN_AUTOMOBILE).click()
-    cy.log('Botão Automobile clicado')
-    cy.get(TEXT_pageAutomobile).should('be.visible')
+    cy.get(TEXT_PAGEAUTOMOBILE).should('be.visible')
+    cy.log('Página Automobile carregada com sucesso ✅')
 })
