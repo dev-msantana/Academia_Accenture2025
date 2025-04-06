@@ -24,7 +24,7 @@ And('preenche o formulario com os dados do seguro', () => {
   cy.irParaSelectPriceOption()
 })
 
-When('seleciona o plano de seguro', () => {
+When('seleciona o proposta de seguro', () => {
   cy.selectPriceOption()
   cy.irParaSendQuote()
 })

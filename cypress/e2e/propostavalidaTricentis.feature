@@ -8,6 +8,6 @@ Funcionalidade: testecriaçãodeseguro-01 - criação de proposta válida de seg
         E preenche o formulario com os dados do veículo
         E preenche o formulario com os dados do segurado
         E preenche o formulario com os dados do seguro
-        Quando seleciona o plano de seguro
+        Quando seleciona o proposta de seguro
         E preenche os dados para envio de proposta
         Então a proposta é enviada com sucesso
