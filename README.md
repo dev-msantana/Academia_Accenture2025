@@ -59,7 +59,7 @@ Instale todas as dependências necessárias:
 bash
 npm install
 
-3. Executar os Teste
+3. Executar os Testes
 
 a) Abrir o Cypress com interface gráfica:
 
@@ -85,6 +85,7 @@ Comando	Descrição
 npx cypress open	Abre o Cypress com interface gráfica
 npx cypress run	Executa todos os testes em modo headless
 npx cypress run --spec "cypress/e2e/**/*.feature"	Executa testes BDD (Cucumber) específicos
+
 🧩 Padrão de Projeto Utilizado
 → Page Object Pattern
 Cada página da aplicação possui um arquivo dedicado dentro da pasta /pages, responsável por centralizar as ações e comandos daquela página.
