@@ -16,7 +16,7 @@ Cypress.Commands.add('enterProductData', () => {
 
     cy.get(seletoresProduct.SELETOR_STARTDATE).type('07/11/2026')
     cy.get(seletoresProduct.INPUT_INSURANCE).select(Math.floor(Math.random() * 9) + 1)
-    cy.get(seletoresProduct.SELECT_MERITRATING).select(Math.floor(Math.random() * 18) + 1)
+    cy.get(seletoresProduct.SELECT_MERITRATING).select(Math.floor(Math.random() * 18) + 2)
     cy.get(seletoresProduct.SELECT_DAMEGEINSURANCE).select(Math.floor(Math.random() * 3) + 1)
     cy.get(seletoresProduct.RADIO_OPITONALPRODUCTS).click({force:true})
     cy.get(seletoresProduct.SELECT_COURTSYCAR).select(Math.floor(Math.random() * 2) + 1)
@@ -34,7 +34,7 @@ Cypress.Commands.add('enterProductDataInvalid', () => {
 
     cy.get(seletoresProduct.SELETOR_STARTDATE).type('04/06/2025')
     cy.get(seletoresProduct.INPUT_INSURANCE).select(Math.floor(Math.random() * 9) + 1)
-    cy.get(seletoresProduct.SELECT_MERITRATING).select(Math.floor(Math.random() * 18) + 1)
+    cy.get(seletoresProduct.SELECT_MERITRATING).select(Math.floor(Math.random() * 18) + 2)
     cy.get(seletoresProduct.SELECT_DAMEGEINSURANCE).select(Math.floor(Math.random() * 3) + 1)
     cy.get(seletoresProduct.RADIO_OPITONALPRODUCTS).click({force:true})
     cy.get(seletoresProduct.SELECT_COURTSYCAR).select(Math.floor(Math.random() * 2) + 1)

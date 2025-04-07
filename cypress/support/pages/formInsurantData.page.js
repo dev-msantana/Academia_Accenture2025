@@ -23,7 +23,7 @@ const dadosFakeSegurado = {
   FIRSTNAME: faker.person.firstName().replace(/[-']/g, ''),
   LASTNAME: faker.person.lastName().replace(/[-']/g, ''),
   STREETADDRESS: faker.location.streetAddress(),
-  ZIPCODE: faker.location.zipCode(),
+  ZIPCODE: faker.location.zipCode(Math.floor((Math.random() * (99999999 - 1000 + 1)) + 1000).toString()),
   CITY: faker.location.city(),
   WEBSITE: faker.internet.url(),
 }
@@ -37,7 +37,7 @@ Cypress.Commands.add('enterInsurantData', () => {
     cy.get(seletoresINSURANT.RADIO_GENDER).click({force: true})
     cy.get(seletoresINSURANT.INPUT_STREETADDRESS).type(dadosFakeSegurado.STREETADDRESS)
     cy.get(seletoresINSURANT.SELECT_COUNTRY).select(Math.floor(Math.random() * 206) + 1)
-    cy.get(seletoresINSURANT.INPUT_ZIPCODE).type(Math.floor(Math.random(dadosFakeSegurado.ZIPCODE) * 1000000).toString())
+    cy.get(seletoresINSURANT.INPUT_ZIPCODE).type(dadosFakeSegurado.ZIPCODE)
     cy.get(seletoresINSURANT.INPUT_CITY).type(dadosFakeSegurado.CITY)
     cy.get(seletoresINSURANT.SELECT_OCCUPATION).select(Math.floor(Math.random() * 5) + 1)
     cy.get(seletoresINSURANT.RADIO_HOBBIES).click({force:true})
